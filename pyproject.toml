@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aum-oxide"
+version = "0.1.0"
+description = "Convert AUM MIDI maps to OXI One instrument definitions"
+requires-python = ">=3.9"
+
+[project.scripts]
+aum-to-oxiindef = "aum_oxide.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

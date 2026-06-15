@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<instrument name="King of Bass" author="Xander">
+  <cc number="0" name="ADSR Link Enable" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Attack" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Attack 2" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Chorus Depth" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Chorus Enable" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Chorus Mix" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Chorus Rate" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Crush Amount" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Crush Bit Rate" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Crush Enable" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Cutoff" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Decay" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Decay 2" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Delay Enable" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Delay Feedback" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Delay Mix" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Delay Time" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Distortion Amount" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Distortion Enable" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Drop Time" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Glide Time" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Global Bend" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="High Pass" channel="1" default="0" min="0" max="127"/>
+  <cc number="3" name="Kick Enable" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 1 Detune" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 1 OSC Mode" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 1 PWM" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 1 Pan" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 1 Semi" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 1 Sound" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 1 Volume" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 1 Waveform" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 2 Detune" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 2 High Pass" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 2 OSC Mode" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 2 PWM" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 2 Pan" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 2 Semi" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 2 Sound" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 2 Volume" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer 2 Waveform" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Layer Mix" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Legato Enable" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="LFO 1 Amount" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="LFO 1 Dest 1 Base Value" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="LFO 1 Dest 1 Param" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="LFO 1 Enable" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="LFO 1 Rate" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="LFO 1 Waveform" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="LFO 2 Amount" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="LFO 2 Dest 1 Base Value" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="LFO 2 Dest 1 Param" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="LFO 2 Dest 2 Base Value" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="LFO 2 Dest 2 Param" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="LFO 2 Enable" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="LFO 2 Mode" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="LFO 2 Rate" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="LFO 2 Waveform" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="LFO Snapback Enable" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Limiter Amount" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Modwheel Destination" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Release" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Release 2" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Resonance" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Seq Destination" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Seq Division" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Seq Enable" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Seq Gate" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Seq Total Steps" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Sustain" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Sustain 2" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Tremolo Depth" channel="1" default="0" min="0" max="127"/>
+  <cc number="0" name="Tremolo Rate" channel="1" default="0" min="0" max="127"/>
+  <cc number="2" name="Volume Control" channel="1" default="0" min="0" max="127"/>
+</instrument>

@@ -1,5 +1,8 @@
 # AUM Oxide
 
+[![CI](https://github.com/YOUR-USERNAME/aum-oxide/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR-USERNAME/aum-oxide/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/YOUR-USERNAME/aum-oxide/graph/badge.svg)](https://codecov.io/gh/YOUR-USERNAME/aum-oxide)
+
 Converts an [AUM](https://kymatica.com/apps/aum) `.aum_midimap` file into an [OXI One](https://oxiinstruments.com) `.oxiindef` instrument definition file.
 
 AUM stores MIDI CC mappings for AUv3 plugins in a binary plist format. This tool reads those mappings and produces the JSON instrument definition that the OXI One sequencer uses to display and control parameters by name.
@@ -45,10 +48,10 @@ This produces a wheel and a source distribution in `dist/`.
 
 ## Running the tests
 
-Install the test dependencies and run the suite:
+Install the package with dev dependencies and run the suite:
 
 ```bash
-pip install pytest pytest-cov
+pip install -e ".[dev]"
 pytest
 ```
 

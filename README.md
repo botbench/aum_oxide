@@ -1,7 +1,7 @@
 # AUM Oxide
 
-[![CI](https://github.com/YOUR-USERNAME/aum-oxide/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR-USERNAME/aum-oxide/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/YOUR-USERNAME/aum-oxide/graph/badge.svg)](https://codecov.io/gh/YOUR-USERNAME/aum-oxide)
+[![CI](https://github.com/botbench/aum-oxide/actions/workflows/ci.yml/badge.svg)](https://github.com/botbench/aum-oxide/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/botbench/aum-oxide/graph/badge.svg)](https://codecov.io/gh/botbench/aum-oxide)
 
 Converts an [AUM](https://kymatica.com/apps/aum) `.aum_midimap` file into an [OXI One](https://oxiinstruments.com) `.oxiindef` instrument definition file.
 

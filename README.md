@@ -65,7 +65,7 @@ pytest --cov=aum_oxide.converter --cov-report=term-missing
 
 ## Usage
 
-```
+```text
 aum-to-oxiindef <input.aum_midimap> [output.oxiindef] [-n NAME] [-m MANUFACTURER] [-a ABBR]
 ```
 
@@ -78,7 +78,7 @@ python -m aum_oxide <input.aum_midimap>
 ### Options
 
 | Flag | Long form | Description |
-|------|-----------|-------------|
+| ------ | ----------- | ------------- |
 | | `input` | Path to the `.aum_midimap` file (required) |
 | | `output` | Path for the `.oxiindef` output (default: same folder as input, same stem) |
 | `-n` | `--name` | Instrument name shown on the OXI display |

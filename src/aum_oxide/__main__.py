@@ -8,6 +8,7 @@ from pathlib import Path
 
 from .converter import (
     build_oxiindef,
+    classify_cc,
     decode_nskeyedarchiver,
     detect_prefix,
     extract_params,
@@ -89,6 +90,14 @@ def main() -> None:
             if p["enabled"]:
                 print(f"    CC{p['cc']:3d}  ch{p['channel']}  {p['display_name']} ({p['raw_name']})")
 
+    cc_warnings = []
+    for p in params:
+        if p["enabled"]:
+            annotation = classify_cc(p["cc"])
+            if annotation is not None:
+                level, description = annotation
+                cc_warnings.append((level, p["cc"], description, p["display_name"]))
+
     json_content = build_oxiindef(
         params,
         instrument_name=instrument_name,
@@ -101,6 +110,15 @@ def main() -> None:
         f.write(json_content)
 
     print(f"\nWritten → {output_path}")
+
+    if cc_warnings:
+        print("\nCC Validation")
+        print("─" * 52)
+        for level, cc, description, param_name in sorted(cc_warnings, key=lambda x: x[1]):
+            if level == "reserved":
+                print(f"  ⚠️  CC{cc:3d}  {param_name} — spec-reserved: {description}")
+            else:
+                print(f"  ℹ️  CC{cc:3d}  {param_name} — conventionally used as: {description}")
 
 
 if __name__ == "__main__":

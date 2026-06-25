@@ -15,6 +15,63 @@ DEFAULT_MIDI_CHANNEL = 1
 _SKIP_PATTERN = re.compile(r'seqStep\d+')
 _SKIP_PREFIXES = ('_AUMNode:', '_collection_')
 
+# CC annotation levels: "reserved" = spec-defined (hard avoid),
+#                       "soft"     = conventionally claimed (check for conflicts).
+# CCs absent from this dict are free for custom assignment.
+_CC_ANNOTATIONS: dict = {
+    # Reserved — MIDI spec-defined
+    0:   ("reserved", "Bank Select MSB"),
+    1:   ("reserved", "Modulation Wheel"),
+    6:   ("reserved", "Data Entry MSB"),
+    7:   ("reserved", "Channel Volume"),
+    10:  ("reserved", "Pan"),
+    11:  ("reserved", "Expression Controller"),
+    32:  ("reserved", "Bank Select LSB"),
+    38:  ("reserved", "Data Entry LSB"),
+    64:  ("reserved", "Sustain Pedal"),
+    65:  ("reserved", "Portamento On/Off"),
+    66:  ("reserved", "Sostenuto"),
+    67:  ("reserved", "Soft Pedal"),
+    68:  ("reserved", "Legato Footswitch"),
+    69:  ("reserved", "Hold 2"),
+    96:  ("reserved", "Data Increment"),
+    97:  ("reserved", "Data Decrement"),
+    98:  ("reserved", "NRPN LSB"),
+    99:  ("reserved", "NRPN MSB"),
+    100: ("reserved", "RPN LSB"),
+    101: ("reserved", "RPN MSB"),
+    120: ("reserved", "All Sound Off"),
+    121: ("reserved", "Reset All Controllers"),
+    122: ("reserved", "Local Control On/Off"),
+    123: ("reserved", "All Notes Off"),
+    124: ("reserved", "Omni Mode Off"),
+    125: ("reserved", "Omni Mode On"),
+    126: ("reserved", "Mono Mode On"),
+    127: ("reserved", "Poly Mode On"),
+    # Soft — conventionally claimed, not spec-locked
+    70:  ("soft", "Sound Controller 1 (Sound Variation)"),
+    71:  ("soft", "Sound Controller 2 (Timbre)"),
+    72:  ("soft", "Sound Controller 3 (Release Time)"),
+    73:  ("soft", "Sound Controller 4 (Attack Time)"),
+    74:  ("soft", "Sound Controller 5 (Brightness)"),
+    75:  ("soft", "Sound Controller 6 (Decay Time)"),
+    76:  ("soft", "Sound Controller 7 (Vibrato Rate)"),
+    77:  ("soft", "Sound Controller 8 (Vibrato Depth)"),
+    78:  ("soft", "Sound Controller 9 (Vibrato Delay)"),
+    79:  ("soft", "Sound Controller 10"),
+    84:  ("soft", "Portamento Control"),
+    91:  ("soft", "Reverb Send Level"),
+    92:  ("soft", "Tremolo Depth"),
+    93:  ("soft", "Chorus Send Level"),
+    94:  ("soft", "Celeste Depth"),
+    95:  ("soft", "Phaser Depth"),
+}
+
+
+def classify_cc(cc: int):
+    """Return (level, description) for notable CCs, or None if free/safe."""
+    return _CC_ANNOTATIONS.get(cc)
+
 
 def decode_nskeyedarchiver(raw: dict) -> dict:
     """Resolve CF$UID pointers and NSDictionary encoding into a plain dict."""

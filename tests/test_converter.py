@@ -13,6 +13,7 @@ import pytest
 from aum_oxide.converter import (
     aum_channel_to_midi,
     build_oxiindef,
+    classify_cc,
     decode_nskeyedarchiver,
     detect_prefix,
     extract_params,
@@ -451,6 +452,93 @@ class TestExtractParams:
         Expected: channel=1."""
         result = extract_params({"cutoff": {"specState": {}, "min": 0.0, "max": 1.0}}, prefix="")
         assert result[0]["channel"] == 1
+
+
+# ── classify_cc ───────────────────────────────────────────────────────────────
+
+class TestClassifyCc:
+
+    def test_free_cc_returns_none(self):
+        """CCs in the free/safe range must return None — no annotation needed.
+        Expected: None for CC 14."""
+        assert classify_cc(14) is None
+
+    def test_reserved_cc_returns_reserved_level(self):
+        """A spec-defined reserved CC must return level 'reserved'.
+        Expected: ('reserved', ...) for CC 64 (Sustain Pedal)."""
+        result = classify_cc(64)
+        assert result is not None
+        level, description = result
+        assert level == "reserved"
+        assert "Sustain" in description
+
+    def test_reserved_cc_bank_select(self):
+        """CC 0 (Bank Select MSB) is spec-reserved.
+        Expected: ('reserved', 'Bank Select MSB')."""
+        assert classify_cc(0) == ("reserved", "Bank Select MSB")
+
+    def test_reserved_cc_channel_mode(self):
+        """Channel Mode messages (120–127) are spec-reserved.
+        Expected: 'reserved' level for CC 123 (All Notes Off)."""
+        level, description = classify_cc(123)
+        assert level == "reserved"
+        assert "All Notes Off" in description
+
+    def test_reserved_cc_rpn_nrpn(self):
+        """RPN/NRPN controllers (98–101) are spec-reserved.
+        Expected: 'reserved' level for CC 98 (NRPN LSB)."""
+        level, _ = classify_cc(98)
+        assert level == "reserved"
+
+    def test_soft_cc_returns_soft_level(self):
+        """A conventionally-claimed CC must return level 'soft'.
+        Expected: ('soft', ...) for CC 74 (Sound Controller 5 / Brightness)."""
+        result = classify_cc(74)
+        assert result is not None
+        level, description = result
+        assert level == "soft"
+        assert "Brightness" in description
+
+    def test_soft_cc_effects_depth(self):
+        """Effects Depth CCs (91–95) return 'soft' level.
+        Expected: 'soft' for CC 91 (Reverb Send Level)."""
+        level, description = classify_cc(91)
+        assert level == "soft"
+        assert "Reverb" in description
+
+    def test_soft_cc_portamento_control(self):
+        """CC 84 (Portamento Control) is conventionally claimed.
+        Expected: ('soft', 'Portamento Control')."""
+        assert classify_cc(84) == ("soft", "Portamento Control")
+
+    def test_boundary_free_cc_3(self):
+        """CC 3 is explicitly in the free range.
+        Expected: None."""
+        assert classify_cc(3) is None
+
+    def test_boundary_free_cc_102(self):
+        """CC 102 is in the free range (102–119).
+        Expected: None."""
+        assert classify_cc(102) is None
+
+    def test_all_reserved_ccs_have_reserved_level(self):
+        """Every spec-reserved CC from the requirements must return 'reserved'.
+        Expected: 'reserved' level for each of the listed reserved CCs."""
+        reserved = [0, 1, 6, 7, 10, 11, 32, 38, 64, 65, 66, 67, 68, 69,
+                    96, 97, 98, 99, 100, 101, 120, 121, 122, 123, 124, 125, 126, 127]
+        for cc in reserved:
+            result = classify_cc(cc)
+            assert result is not None, f"CC {cc} should be annotated"
+            assert result[0] == "reserved", f"CC {cc} should be 'reserved', got {result[0]}"
+
+    def test_all_soft_ccs_have_soft_level(self):
+        """Every conventionally-claimed CC must return 'soft' level.
+        Expected: 'soft' for each of 70–79, 84, 91–95."""
+        soft = list(range(70, 80)) + [84] + list(range(91, 96))
+        for cc in soft:
+            result = classify_cc(cc)
+            assert result is not None, f"CC {cc} should be annotated"
+            assert result[0] == "soft", f"CC {cc} should be 'soft', got {result[0]}"
 
 
 # ── build_oxiindef ────────────────────────────────────────────────────────────
